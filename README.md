@@ -11,6 +11,18 @@ It is a full-stack demo that provisions AI agents into sandbox sessions running 
 
 [![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/background-agent?referralCode=P06La2&utm_medium=integration&utm_source=template&utm_campaign=generic)
 
+## Video Progression:
+
+1. Run opencode locally
+2. Run opencode inside a container
+3. Deploy to Railway
+4. Add code-server to container image
+5. Use the Railway API to deploy
+6. Create a custom API for the control plane
+7. Add a frontend (+ add proxy) 
+8. Install other coding agents
+9. Configure GitHub access and pre-clone the repo
+
 ## Development Notes
 
 ### Project structure
