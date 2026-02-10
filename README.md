@@ -1,22 +1,31 @@
-# background-agent-railway
+# Background Agent on Railway
 
-> This is the companion repo for <INSERT YT LINK + THUMBNAIL>, in partnership with [Railway](https://railway.com?referralCode=P06La2).
+This is the companion repo for ["I Built a Remote Coding Agent Platform on Railway (OpenCode, Claude Code, Codex)
+"](https://youtu.be/A-beOnncri8) a video I created in partnership with [Railway](https://railway.com?referralCode=P06La2).
 
-It is a small full-stack demo that provisions and routes sandbox sessions (inspired by https://builders.ramp.com/post/why-we-built-our-background-agent)
+[![](./readme-assets/thumbnail.png)](https://youtu.be/A-beOnncri8)
 
-## Project structure
+It is a full-stack demo that provisions AI agents into sandbox sessions running on Railway. (inspired by [Ramp's internal agent "Inspect"](https://builders.ramp.com/post/why-we-built-our-background-agent))
+
+## Deployment Template!
+
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/background-agent?referralCode=P06La2&utm_medium=integration&utm_source=template&utm_campaign=generic)
+
+## Development Notes
+
+### Project structure
 
 - `packages/api`: Express + TypeScript API, Railway integration, session management, and proxying.
 - `packages/web`: React + Vite frontend.
 - `packages/sandbox`: Sandbox container image used by session environments.
 - `docker-compose.yml`: Local API + Postgres + sandbox containers for development.
 
-## Prerequisites
+### Prerequisites
 
 - [Mise](https://mise.jdx.dev/)
 - Docker + Docker Compose
 
-## Local development
+### Local development
 
 1. Start local infra:
 
@@ -46,7 +55,7 @@ It is a small full-stack demo that provisions and routes sandbox sessions (inspi
 
 The API runs on `http://localhost:3000` and the web app runs on `http://localhost:5173`.
 
-## Useful API commands
+### Useful API commands
 
 ```bash
 pnpm --dir packages/api db:generate
@@ -55,7 +64,7 @@ pnpm --dir packages/api build
 pnpm --dir packages/api start
 ```
 
-## Useful web commands
+### Useful web commands
 
 ```bash
 pnpm --dir packages/web build
