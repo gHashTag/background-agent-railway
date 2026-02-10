@@ -1,7 +1,7 @@
 # Background Agent on Railway
 
 This is the companion repo for ["I Built a Remote Coding Agent Platform on Railway (OpenCode, Claude Code, Codex)
-"](https://youtu.be/A-beOnncri8) (a video I created in partnership with [Railway](https://railway.com?referralCode=P06La2)).
+"](https://youtu.be/A-beOnncri8) (a video I created in partnership with [Railway](https://railway.com?referralCode=P06La2&utm_medium=social&utm_source=youtube&utm_campaign=sid)).
 
 [![](./readme-assets/thumbnail.png)](https://youtu.be/A-beOnncri8)
 
@@ -9,7 +9,7 @@ It is a full-stack demo that provisions AI agents into sandbox sessions running 
 
 ## Deployment Template!
 
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/background-agent?referralCode=P06La2&utm_medium=integration&utm_source=template&utm_campaign=generic)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/background-agent?referralCode=P06La2&utm_medium=social&utm_source=youtube&utm_campaign=sid)
 
 ## Video Progression:
 
