@@ -1,4 +1,4 @@
-# Multi-stage build to avoid pnpm cache issues
+# Multi-stage build without corepack
 FROM node:22-alpine AS builder
 
 WORKDIR /app/packages/api
@@ -7,8 +7,6 @@ COPY packages/api/package.json ./
 COPY packages/api/pnpm-lock.yaml ./
 COPY packages/api/tsconfig.json ./
 COPY packages/api/src ./
-
-RUN corepack enable
 
 RUN pnpm install --frozen-lockfile
 RUN pnpm build
