@@ -11,7 +11,7 @@ COPY packages/api/pnpm-lock.yaml ./
 COPY packages/api/tsconfig.json ./
 COPY packages/api/src ./
 
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 RUN pnpm build
 
 # Production stage
