@@ -28,17 +28,45 @@ export type CreateSessionInput = {
 const generateSessionName = () => `sandbox-${Date.now()}`;
 
 export const createSession = async ({ name }: CreateSessionInput) => {
+  const resolvedName = name?.trim() ? name.trim() : generateSessionName();
+  const now = new Date();
+
+  // Локальный режим: создаем сессию напрямую в БД (без Railway API)
   if (config.localMode) {
-    throw new HttpError(403, "Session creation disabled in local mode");
+    // Генерируем случайное имя сессии, если не указано
+    const sessionName = resolvedName || generateSessionName();
+
+    // Выбираем sandbox (a или b) для балансировки
+    const sandboxSuffix = ["a", "b"][Math.floor(Math.random() * 2)];
+    const fullSessionName = `sandbox-${sandboxSuffix}`;
+
+    // Соответствующий railwayServiceId из seed.ts
+    const railwayServiceId = sandboxSuffix === "a"
+      ? "local-sandbox-a"
+      : "local-sandbox-b";
+
+    const id = randomUUID();
+
+    const [session] = await db
+      .insert(sessions)
+      .values({
+        id,
+        name: fullSessionName,
+        status: "ready",
+        railwayServiceId: railwayServiceId,
+        createdAt: now,
+        updatedAt: now,
+      })
+      .returning();
+
+    return session;
   }
 
-  const resolvedName = name?.trim() ? name.trim() : generateSessionName();
+  // Railway API mode (для продакшена)
   const sandboxVariables: Record<string, string> = {};
-
   if (config.sandboxRepoUrl) {
     sandboxVariables.SANDBOX_REPO_URL = config.sandboxRepoUrl;
   }
-
   if (config.githubPersonalAccessToken) {
     sandboxVariables.GH_TOKEN = config.githubPersonalAccessToken;
   }
@@ -68,7 +96,6 @@ export const createSession = async ({ name }: CreateSessionInput) => {
   }
 
   const id = randomUUID();
-  const now = new Date();
 
   const [session] = await db
     .insert(sessions)
